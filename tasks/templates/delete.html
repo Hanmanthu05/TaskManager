@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TaskManager
+{% endblock %}
+
+{% block content %}
+<div class="task-container">
+    <h2>Are you sure you want to delete "{{ task.title }}"?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" id='confirm-D-btn'>Yes, delete</button>
+        <a href="{% url 'listTask' %}"><button id='cancel-btn' type="button">Cancel</button></a>
+    </form>
+</div>
+{% endblock %}

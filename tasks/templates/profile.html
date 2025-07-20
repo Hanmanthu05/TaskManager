@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block content %}
+<div class='profile-container'>
+    <h2 style='text-align:center;'>USER DETAILS</h2>
+    <p> <strong>User Name :</strong> {{user.username}} </p>
+    <p><strong>User Email :</strong> {{user.email}} </p>
+</div>
+
+{% endblock %}

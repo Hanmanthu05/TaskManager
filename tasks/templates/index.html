@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TaskManager
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'addTask' %}"><button  id='add-btn' type='button'>Add Task</button> </a>
+    <div class='task-container'>
+        {% if user.is_authenticated %}
+        {% if tasks %}
+        {% for task in tasks %}
+            <div class='added-tasks'>
+                <p><b>TITLE</b> : {{task.title}}</p>
+                <p><b>DESCRIPTION</b> : {{task.description}}</p>
+                <p><b>ADDED DATE</b> : {{task.added_date}}</p>
+                {% if task.completed %} 
+                    <p><b>STATUS</b> : Completed</p>
+                {% else %}
+                    <p><b>STATUS</b> : Pending</p>
+                    <div class='DE-btns'>
+                        <a href="{% url 'updateTask' task.id %}"><button id='E-btn'>Edit</button></a>
+                        <a href="{% url 'deleteTask' task.id %}"><button type='button' id='D-btn'>Delete</button></a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% else %}
+        <h2>No Tasks Available</h2>
+        {% endif %}
+        {% endif %}
+    </div>
+
+
+{% endblock %}

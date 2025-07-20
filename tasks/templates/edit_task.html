@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    UPDATE
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'listTask' %}"><button  id='go-back-btn' type='button'>Go Back</button> </a>
+<div class="edit-form-content">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="form-submit-btn">UPDATE</button>
+        </form>
+      </div>
+{% if messages %}
+<div class='whole-form'>
+  {% for message in messages %}
+    <p id="added-msg">{{ message }}</p>
+  {% endfor %}
+    <a href="{% url 'addTask' %}"><button  id='add-another-btn' type='button'>Add One More Task</button> </a>
+</div>
+{% endif %}
+
+
+{% endblock %}
